@@ -1,0 +1,23 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore node_modules for JavaScript projects
+node_modules/
+
+# Ignore environment variable files
+.env
+
+# virtual environment
+
+/venv
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+.idea/
+.vscode/
+*.egg-info/
