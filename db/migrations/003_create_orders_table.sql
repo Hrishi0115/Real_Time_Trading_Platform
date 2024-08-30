@@ -11,15 +11,15 @@ CREATE TABLE orders (
     quantity NUMERIC(10, 2),  -- Number of shares users intends to buy or sell; for market orders where an amount is specified, this represents 
     -- the estimated maximum quantity based on the current market price
     amount NUMERIC(15, 2),  -- maximum of amount the user is willing to spend; optional
-    price NUMERIC(10, 2),  -- User-defined price per share for limit orders; estimated or indicative price per share at 
-    -- the time of order placement for market orders
+    price NUMERIC(10, 2),  -- estimated or indicative price per share at the time of order placement for market orders, for limit orders equal to the 'limit_price'
+    -- in the order_metadata field, still an estimate (different to final price at execution/price in the trades table)
+    -- because the actual price the instrument was purchased at can be better, and thus not equal to, the limit price specified
     fees JSON,  -- JSON field to capture any fees associated with the order (UK stamp duty, FX fees, etc.)
     equity_currency VARCHAR(3), -- the currency in which the instrument is denominated
     transaction_currency VARCHAR(3), -- the currency in which the user is transacting
     status VARCHAR(20),  -- Pending, Partially Filled, Filled, Canceled
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- date and time when order was placed, default to current timestamp
     settled_at TIMESTAMP NULL, -- date and time when the order is settled, if applicable
-    order_metadata JSON  -- JSON column to store type-specific details like stop prices
+    order_metadata JSON  -- JSON column to store order-specific details like stop prices for stop orders, limit prices for limit orders, etc.
 );
 
--- last question - for price - is limit price specified in price or in order_metadata?
