@@ -5,6 +5,7 @@
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY, -- unique identifier for each order
     user_id INT REFERENCES users(user_id), -- identifier of the user placing the order; references the `users` table
+    portfolio_id INT NOT NULL REFERENCES portfolios(portfolio_id), -- foreign key linking to the portfolio from which funds are reserved
     instrument_id INT REFERENCES instruments(instrument_id), -- identifier of the security being traded; references the 'securities` table
     order_direction VARCHAR(10),  -- direction of the order; Buy, Sell, Short, Cover
     order_type VARCHAR(20),  -- specifies the type of order; Market, Limit, Stop, Stop-Limit, etc.

@@ -4,7 +4,7 @@
 
 CREATE TABLE positions (
     position_id SERIAL PRIMARY KEY, -- unique identifier for each position
-    portfolio_id INT NOT NULL REFERENCES portfolio(portfolio_id), -- foreign key linking to the portfolio
+    portfolio_id INT NOT NULL REFERENCES portfolios(portfolio_id), -- foreign key linking to the portfolio
     instrument_id INT NOT NULL REFERENCES instruments(instrument_id), -- foreign key linking to the instrument being held
     quantity NUMERIC(15, 6) NOT NULL, -- number of shares/units held; positive for long positions and negative for short positions
     average_price NUMERIC(15, 6) NOT NULL CHECK (average_price > 0), -- average price paid per unit; must be greater than 0

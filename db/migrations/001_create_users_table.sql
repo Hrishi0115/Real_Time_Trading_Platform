@@ -12,7 +12,7 @@ CREATE TABLE users (
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- timestamp when the user account was created
 	-- setting default value for `created_at` to the current date and time whenever a new row is inserted
 	last_login TIMESTAMP, -- timestamp of the user's last login
-	role VARCHAR(20) NOT NULL -- user role (e.g., trader, admin)
+	role VARCHAR(20) NOT NULL DEFAULT 'trader' -- user role (e.g., trader, admin)
 );
 
 

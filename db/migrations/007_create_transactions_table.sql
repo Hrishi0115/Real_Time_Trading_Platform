@@ -6,6 +6,8 @@ CREATE TABLE transactions (
     user_id INT NOT NULL REFERENCES users(user_id), -- foreign key linking to the user performing the transaction
     portfolio_id INT REFERENCES portfolios(portfolio_id), -- foreign key linking to the associated portfolio, optional, for example, management fee would
     -- not be associated with a particular portfolio
+    trade_id INT REFERENCES trades(trade_id), -- Foreign key linking to the related trade, if applicable
+    -- this will typically be used for transactions related to buying/selling instruments
     transaction_type VARCHAR(20) NOT NULL, -- type of transaction, e.g., 'deposit', 'withdrawal' 'fee', 'dividend', 'interest'
     amount NUMERIC(15,2) NOT NULL, -- amount of the transaction; positive for deposits, negative for withdrawls
     currency VARCHAR(3) NOT NULL, -- currency in which the transaction is denominated
