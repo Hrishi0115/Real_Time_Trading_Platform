@@ -16,10 +16,8 @@ CREATE TABLE portfolios (
     portfolio_id SERIAL PRIMARY KEY, -- unique identifier for each portfolio
     user_id INT NOT NULL REFERENCES users(user_id), -- foreign key linking to the user who owns the portfolio
     portfolio_name VARCHAR(100) NOT NULL, -- name of portfolio (e.g., long term, day trading)
-    total_value NUMERIC(15,2) DEFAULT 0, -- total value of the portfolio, cash + positions
     cash_value NUMERIC(15,2) DEFAULT 0, -- current cash balance in the portfolio
     reserved_value NUMERIC(15,2) DEFAULT 0, -- cash reserved for pending orders
-    position_value NUMERIC(15,2) DEFAULT 0, -- current total value of all positions in the portfolio
     base_currency VARCHAR(3) NOT NULL, -- Currency in which the portfolio is denominated (e.g., 'USD', 'GBP') 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- timestamp when the portfolio was created
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- timestamp when the portfolio was last updated

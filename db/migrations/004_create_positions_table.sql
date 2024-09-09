@@ -9,5 +9,6 @@ CREATE TABLE positions (
     quantity NUMERIC(15, 6) NOT NULL, -- number of shares/units held; positive for long positions and negative for short positions
     average_price NUMERIC(15, 6) NOT NULL CHECK (average_price > 0), -- average price paid per unit; must be greater than 0
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- timestamp when the position entry was created
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- timestamp when the position entry was last updated
+    updated_at TIMESTAMP NULL, -- timestamp when the position entry was last updated
+    CONSTRAINT unique_portfolio_instrument UNIQUE (portfolio_id, instrument_id) -- ensures uniqueness of portfolio and instrument combination
 )
